@@ -1,0 +1,9 @@
+agno
+gradio
+pydantic
+phidata
+SQLAlchemy
+pandas
+numpy
+groq
+openai
