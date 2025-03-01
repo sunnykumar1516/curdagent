@@ -27,19 +27,24 @@ def set_api_key(api_key):
     os.environ["GROQ_API_KEY"] = api_key 
     return "API Key saved successfully!"
 
-#stored_api_key = ""
+stored_api_key = ""
 
 with gr.Blocks() as app:
+    
     with gr.Row():
         with gr.Column(scale=1):
             with gr.Tabs():
                 with gr.Tab("Main App"):
                     gr.Markdown("## AI Interaction")
+                    gr.Markdown("### Created by [Sunny Kumar](https://www.linkedin.com/in/sunny-kumar-b232417a/)")
+                    gr.Markdown("### <span style='color:green;'> you can add record, display record, list tables in db </span>")
+                    
                     input_text = gr.Textbox(label="Enter your query")
+                    examples = gr.Examples([["list all tables in databse"], ["display records from table test"], ["add records test,uniqueemail,age to table test"]], input_text)
                     output_text = gr.Textbox(label="Response")
                     submit_btn = gr.Button("Submit")
                     submit_btn.click(process_input, inputs=input_text, outputs=output_text)
-                
+                    gr.Markdown("###  db schema is name: user name, email:user email, age: age of user. <span style='color:blue;'>email is primary key </span>")
                 with gr.Tab("API Keys"):
                     gr.Markdown("## Manage groq API Keys")
                     api_key_input = gr.Textbox(label="Enter API Key", type="password")
